@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irfan | Data Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --main-bg: #141414;
+            --card-bg: #181818;
+            --accent: #ff3c00;
+            --text-light: #f8f8f8;
+            --text-gray: #bbb;
+        }
+        body {
+            background: var(--main-bg);
+            color: var(--text-light);
+            font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            padding: 30px 20px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            background: var(--main-bg);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .nav a {
+            color: var(--accent);
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 0.95em;
+        }
+        .nav a:hover {
+            border-bottom: 2px solid var(--accent);
+            transform: translateY(-2px);
+        }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            box-shadow: 0 0 60px var(--accent);
+            margin: 22px auto;
+            display: block;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 36px;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 10px 0;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--text-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            color: var(--accent);
+            font-size: 1.5em;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .hero .location {
+            color: var(--text-gray);
+            font-size: 1.1em;
+            margin-bottom: 16px;
+        }
+        .hero .hire-btn {
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            padding: 14px 35px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,60,0,0.3);
+            font-weight: 600;
+        }
+        .hero .hire-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255,60,0,0.5);
+        }
+        .section {
+            background: var(--card-bg);
+            margin: 40px auto;
+            max-width: 1000px;
+            border-radius: 15px;
+            box-shadow: 0 0 48px rgba(255,60,0,0.08);
+            padding: 40px 35px;
+            animation: slideUp 0.6s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: var(--accent);
+            font-size: 1.8em;
+            letter-spacing: 0.07em;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 8px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .about p {
+            color: var(--text-gray);
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .download-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255,60,0,0.2);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,60,0,0.4);
+        }
+        .experience-badge {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255,60,0,0.1);
+            border-radius: 25px;
+            border: 2px solid var(--accent);
+        }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: left;
+        }
+        .skill-item {
+            background: rgba(255,60,0,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255,60,0,0.2);
+        }
+        .skill-label {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .skill-bar-bg {
+            background: #222;
+            border-radius: 10px;
+            height: 18px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .skill-bar-value {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, #ff6a33 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        .skill-percent {
+            font-size: 1.2em;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: #171717;
+            border-radius: 12px;
+            padding: 0;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(255,60,0,0.3);
+        }
+        .project-header {
+            background: linear-gradient(135deg, var(--accent), #ff6a33);
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .project-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .project-title {
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .project-tech {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .project-body {
+            padding: 25px 20px;
+        }
+        .project-description {
+            color: var(--text-gray);
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .project-features {
+            margin-bottom: 20px;
+        }
+        .project-features h4 {
+            color: var(--accent);
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .project-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .project-features li {
+            color: var(--text-gray);
+            font-size: 0.9em;
+            margin-bottom: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .project-features li:before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .project-btn {
+            flex: 1;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .project-btn:hover {
+            background: #ff6a33;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,60,0,0.4);
+        }
+        .project-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .project-btn.secondary:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .service-card {
+            background: #171717;
+            border-radius: 12px;
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255,60,0,0.1);
+            font-size: 1.15em;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(255,60,0,0.3);
+            color: var(--accent);
+        }
+        .contact-me {
+            text-align: center;
+        }
+        .contact-btn {
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 6px;
+            margin: 24px auto;
+            padding: 14px 40px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255,60,0,0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(255,60,0,0.5);
+        }
+        .contact-details {
+            margin-top: 25px;
+        }
+        .contact-details p {
+            color: var(--text-gray);
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .contact-details span {
+            display: block;
+            color: var(--accent);
+            font-size: 1.2em;
+            margin: 12px 0;
+            font-weight: 600;
+        }
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            background: #171717;
+            border-radius: 8px;
+            padding: 12px 22px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08em;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .social-icon img {
+            width: 28px;
+            height: 28px;
+            margin-right: 10px;
+            filter: invert(52%) sepia(99%) saturate(1822%) hue-rotate(10deg) brightness(95%) contrast(91%);
+            transition: filter 0.3s;
+        }
+        .social-icon:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px rgba(255,60,0,0.3);
+        }
+        .social-icon:hover img {
+            filter: invert(100%) brightness(200%);
+        }
+        footer {
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-family: 'Segoe UI';
+            font-size: 1.05em;
+            letter-spacing: 0.04em;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .nav a {
+                margin: 0 8px;
+                font-size: 0.85em;
+            }
+            .section {
+                padding: 30px 20px;
+                margin: 30px 15px;
+            }
+            .skills {
+                grid-template-columns: 1fr;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <img class="profile-img" src="./ChatGPT Image Oct 29, 2025, 11_40_58 PM.jpg" alt="Irfan - Data Analyst">
+    
+    <div class="hero">
+        <p>Hello, I'm</p>
+        <h1>Irfan</h1>
+        <div class="subtitle">Data Analyst</div>
+        <div class="location">📍 India</div>
+        <button class="hire-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Hire Me</button>
+    </div>
+
+    <div class="section about" id="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate fresher in the field of Data Analytics with a strong foundation in transforming raw data into actionable insights. Through my academic projects and self-learning journey, I've developed expertise in Python, SQL, and data visualization tools.</p>
+        <p>I'm eager to apply my analytical skills and fresh perspective to real-world business challenges, helping organizations make data-driven decisions that create impact.</p>
+        <button class="download-btn">Download CV</button>
+    </div>
+
+    <div class="section" id="skills">
+        <h2>My Skills</h2>
+        <div class="experience-badge">Fresh Graduate | Eager to Learn</div>
+        <div class="skills">
+            <div class="skill-item">
+                <div class="skill-label">Python</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:85%;"></span>
+                </div>
+                <div class="skill-percent">85%</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label">SQL</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:80%;"></span>
+                </div>
+                <div class="skill-percent">80%</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label">Power BI</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:75%;"></span>
+                </div>
+                <div class="skill-percent">75%</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label">Tableau</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:70%;"></span>
+                </div>
+                <div class="skill-percent">70%</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label">Excel</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:88%;"></span>
+                </div>
+                <div class="skill-percent">88%</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label">Pandas & NumPy</div>
+                <div class="skill-bar-bg">
+                    <span class="skill-bar-value" style="width:82%;"></span>
+                </div>
+                <div class="skill-percent">82%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">📊</div>
+                    <div class="project-title">Sales Analytics Dashboard</div>
+                    <div class="project-tech">Power BI | SQL | Excel</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Built an interactive sales dashboard analyzing 50,000+ transactions to identify trends, top-performing products, and regional performance metrics.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Real-time sales tracking and KPI monitoring</li>
+                            <li>Customer segmentation analysis</li>
+                            <li>Predictive revenue forecasting</li>
+                            <li>Interactive filters and drill-down capabilities</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">View Project</a>
+                        <a href="#" class="project-btn secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🛒</div>
+                    <div class="project-title">E-commerce Customer Analysis</div>
+                    <div class="project-tech">Python | Pandas | Matplotlib</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Analyzed customer behavior patterns using Python to identify purchase trends and optimize marketing strategies for an e-commerce platform.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>RFM analysis for customer segmentation</li>
+                            <li>Market basket analysis using Apriori algorithm</li>
+                            <li>Churn prediction modeling</li>
+                            <li>Data visualization with interactive charts</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">View Project</a>
+                        <a href="#" class="project-btn secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🏥</div>
+                    <div class="project-title">Healthcare Data Insights</div>
+                    <div class="project-tech">Tableau | SQL | Python</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Created comprehensive healthcare analytics dashboards to track patient demographics, treatment outcomes, and hospital resource utilization.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Patient admission trend analysis</li>
+                            <li>Treatment success rate visualization</li>
+                            <li>Resource allocation optimization</li>
+                            <li>Disease outbreak pattern detection</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">View Project</a>
+                        <a href="#" class="project-btn secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">💰</div>
+                    <div class="project-title">Financial Portfolio Tracker</div>
+                    <div class="project-tech">Python | SQL | Excel VBA</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed an automated financial portfolio tracking system with real-time data updates and performance analytics.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Automated data collection from multiple sources</li>
+                            <li>Portfolio performance metrics calculation</li>
+                            <li>Risk assessment and diversification analysis</li>
+                            <li>Customizable reporting and alerts</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-btn">View Project</a>
+                        <a href="#" class="project-btn secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section" id="services">
+        <h2>Services I Offer</h2>
+        <div class="services">
+            <div class="service-card">📊 Data Analytics</div>
+            <div class="service-card">💼 Business Intelligence</div>
+            <div class="service-card">📈 Data Visualization</div>
+            <div class="service-card">🔍 Exploratory Data Analysis</div>
+            <div class="service-card">📋 Report Automation</div>
+            <div class="service-card">🎯 Dashboard Creation</div>
+        </div>
+    </div>
+
+    <div class="section contact-me" id="contact">
+        <h2>Contact Me</h2>
+        <button class="contact-btn" onclick="window.location.href='mailto:irfanansari7139@gmail.com'">Let's Chat</button>
+        
+        <div class="contact-details">
+            <p>You can reach out directly via email:</p>
+            <span>📧 irfanansari7139@gmail.com</span>
+            <p>Or call: <span style="display:inline;">📞 +91-6204025836</span></p>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://github.com/irfu11" target="_blank" class="social-icon">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub" />
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/md-irfan-2b7480226/" target="_blank" class="social-icon">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn" />
+                LinkedIn
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank" class="social-icon">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/instagram.svg" alt="Instagram" />
+                Instagram
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Irfan | Data Analyst Portfolio | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
